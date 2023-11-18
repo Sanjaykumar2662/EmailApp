@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Email Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            border: 2px solid #008CBA;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #008CBA;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #008CBA;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .valid-emails {
+            color: green;
+        }
+
+        .invalid-emails {
+            color: red;
+        }
+
+        form {
+            margin-top: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #008CBA;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 2px solid #008CBA;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        input[type="text"] {
+            height: 40px;
+        }
+
+        button {
+            background-color: #008CBA;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 24px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #005D7F;
+        }
+
+        .email-form {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Email Validation Results</h1>
+
+        <h2>Valid Email Addresses:</h2>
+        <ul class="valid-emails">
+            {% for email in valid_emails %}
+            <li>{{ email }}</li>
+            {% endfor %}
+        </ul>
+
+        <form id="sendEmailForm" method="POST" action="{% url 'send_email' %}">
+            {% csrf_token %}
+            <input type="hidden" name="valid_emails" value="{{ valid_emails|join:',' }}">
+            <button type="button" onclick="showEmailForm()">Send Mail</button>
+        </form>
+
+        <div class="email-form">
+            <h2>Send Email</h2>
+            <form method="POST" action="{% url 'send_email' %}">
+                {% csrf_token %}
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" required><br><br>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="4" required></textarea><br><br>
+
+                <input type="hidden" name="valid_emails" value="{{ valid_emails|join:',' }}">
+
+                <button type="submit">Send</button>
+            </form>
+        </div>
+
+        <h2>Invalid Email Addresses:</h2>
+        <ul class="invalid-emails">
+            {% for email in invalid_emails %}
+            <li>{{ email }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <script>
+        function showEmailForm() {
+            document.getElementById('sendEmailForm').style.display = 'none';
+            document.querySelector('.email-form').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

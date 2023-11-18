@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        .success h1 {
+            color: #008000;
+        }
+
+        .error h1 {
+            color: #FF0000;
+        }
+
+        p {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    {% if status == 'success' %}
+        <div class="success">
+            <h1>Email Sent Successfully!</h1>
+            <p>Your email has been sent successfully. Thank you!</p>
+        </div>
+    {% elif status == 'error' %}
+        <div class="error">
+            <h1>Failed to Send Email</h1>
+            <p>Something went wrong, and the email could not be sent. Please try again later.</p>
+        </div>
+    {% else %}
+        <h1>Error</h1>
+        <p>Invalid request. Please try again.</p>
+    {% endif %}
+</body>
+</html>

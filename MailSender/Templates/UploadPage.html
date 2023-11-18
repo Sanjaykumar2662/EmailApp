@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mass-Mail Dispatcher</title>
+  <style>
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px;
+      border: 2px solid #008CBA;
+      border-radius: 10px;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+
+    .container h2 {
+      font-size: 36px;
+      color: #008CBA;
+    }
+
+    .container p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      font-size: 20px;
+      margin-bottom: 10px;
+      color: #000000;
+      text-align: left; /* Left-align the label */
+    }
+
+    .custom-file-upload {
+      display: inline-block;
+      background-color: transparent;
+      color: #008CBA; /* Text color */
+      padding: 10px 20px;
+      border: 2px solid #008CBA; /* Blue border */
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .custom-file-upload:hover {
+      background-color: #005D7F; /* Darker blue on hover */
+    }
+
+    .upload-button {
+      background-color: #4CAF50; /* Green background color */
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .upload-button:hover {
+      background-color: #45a049; /* Darker green on hover */
+    }
+
+    .how-it-works {
+      text-align: left; /* Left-align the content */
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Mass-Mail Dispatcher</h2>
+    <p>Welcome to the Mass-Mail Dispatcher, an efficient tool for sending emails to multiple recipients!</p>
+    <p>With this application, you can easily send emails to a large list of recipients from a CSV file. Whether you need to reach out to customers, clients, or your community, Mass-Mail Dispatcher simplifies the process.</p>
+    <b><p class="how-it-works">Here's how it works:</p></b>
+    <ol class="how-it-works">
+      <li>Upload a CSV file containing the email addresses of your recipients.</li>
+      <li>Compose your email by specifying the subject and content.</li>
+      <li>Click the "Send Emails" button, and we'll take care of the rest!</li>
+    </ol>
+    <p>Save time and effort by using Mass-Mail Dispatcher for your email campaigns. Whether it's for newsletters, announcements, or personalized messages, we've got you covered.</p>
+    <div class="button-container">
+      <form id="uploadForm" action="/process_upload" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+          <input type="file" id="csvFile" name="csvFile" accept=".csv" value="adfa">
+        </div><br><br>
+        <div class="form-group">
+          <button for="uploadButton" style="color:#000000" class="upload-button">Upload</button><br><br>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
