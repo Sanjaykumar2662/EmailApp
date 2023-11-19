@@ -8,6 +8,7 @@ from django.core.mail import send_mail
 from django.core.validators import EmailValidator
 from django.core.exceptions import ValidationError
 from EmailApp.settings import EMAIL_HOST_USER
+import re
 
 def index(request):
     return render(request, 'UploadPage.html')
@@ -51,6 +52,12 @@ def send_email(request):
     return render(request, 'success.html', {'status': status})
 
 
+def is_valid_email(email):
+    # Regular expression for a basic email validation
+    email_regex = re.compile(r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b')
+
+    return re.match(email_regex, email)
+
 def handler(file_content):
     # Parse the CSV file content
     email_addresses = []
@@ -63,13 +70,11 @@ def handler(file_content):
     # Validate email addresses
     valid_emails = []
     invalid_emails = []
-    email_validator = EmailValidator()
 
     for email in email_addresses:
-        try:
-            email_validator(email)
+        if is_valid_email(email):
             valid_emails.append(email)
-        except ValidationError:
+        else:
             invalid_emails.append(email)
 
     return valid_emails, invalid_emails
