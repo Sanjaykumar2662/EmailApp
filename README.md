@@ -1,7 +1,5 @@
 # EmailApp
 
-# EmailApp
-
 ## Overview
 
 EmailApp is a Django web application designed to handle email-related tasks efficiently. It provides a user-friendly interface for users to upload CSV files containing email addresses, validates the emails, stores the results in a PostgreSQL database, and offers the capability to send emails to valid addresses.
@@ -38,6 +36,8 @@ EmailApp is a Django web application designed to handle email-related tasks effi
 3. Run migrations: `python manage.py migrate`.
 4. Start the development server: `python manage.py runserver`.
 5. Access the application at [http://localhost:8000](http://localhost:8000).
+
+ LIVE DEMO OF THIS APP : https://email-app-delta.vercel.app/
 
 Feel free to explore, contribute, and enhance the functionality of EmailApp!
 
