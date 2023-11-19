@@ -39,5 +39,7 @@ EmailApp is a Django web application designed to handle email-related tasks effi
 4. Start the development server: `python manage.py runserver`.
 5. Access the application at [http://localhost:8000](http://localhost:8000).
 
+ DEMO IN VERCEL : https://email-app-delta.vercel.app/
+
 Feel free to explore, contribute, and enhance the functionality of EmailApp!
 
