@@ -79,11 +79,11 @@ WSGI_APPLICATION = "EmailApp.wsgi.application"
 DATABASES = {
         'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'EmailApp',
+        'NAME': 'railway',
         'USER': 'postgres',
-        'PASSWORD': 'root123',
-        'HOST': '127.0.0.1',
-        'PORT': '5432', 
+        'PASSWORD': '-cGC5FDE5caabe21dG24fgfECb1CGGA6',
+        'HOST': 'monorail.proxy.rlwy.net',
+        'PORT': '34367', 
     }
 }
 
