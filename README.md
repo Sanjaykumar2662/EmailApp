@@ -1,7 +1,5 @@
 # EmailApp
 
-# EmailApp
-
 ## Overview
 
 EmailApp is a Django web application designed to handle email-related tasks efficiently. It provides a user-friendly interface for users to upload CSV files containing email addresses, validates the emails, stores the results in a PostgreSQL database, and offers the capability to send emails to valid addresses.
